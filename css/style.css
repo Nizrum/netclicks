@@ -158,9 +158,9 @@ p {
     -webkit-transition: all ease .5s;
     -o-transition: all ease .5s;
     transition: all ease .5s;
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
 
 }
 
@@ -488,6 +488,8 @@ main {
     flex-direction: column;
     -webkit-box-shadow: 3px 3px 20px 1px rgba(200, 200, 200, .75);
     box-shadow: 3px 3px 20px 1px rgba(200, 200, 200, .75);
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .tv-card__head {
@@ -506,7 +508,7 @@ main {
 .tv-card__vote {
     position: absolute;
     top: 18px;
-    left: 1px;
+    left: 0px;
     text-align: center;
     color: #FFFFFF;
     background-color: #FF637D;
@@ -515,6 +517,8 @@ main {
     display: inline-block;
     line-height: 25px;
     font-weight: 900;
+    border-radius: 0 3px 3px 0;
+    line-height: 28px;
 }
 
 .tv-card__img {
