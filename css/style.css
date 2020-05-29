@@ -541,7 +541,7 @@ main {
 }
 
 .modal__content {
-    border: 32px solid #00addc;
+    border: 32px solid rgb(0, 131, 143);;
     position: relative;
 	min-width: 600px;
     max-width: 800px;
@@ -604,7 +604,7 @@ main {
     left: -80px;
     width: 185px;
     height: 278px;
-    box-shadow: 2px 2px 5px 1px rgba(53, 117, 184, 0.49);
+    box-shadow: 2px 2px 5px 1px rgba(0, 131, 143, 0.49);;
 }
 
 .cross {
