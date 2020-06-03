@@ -30,7 +30,7 @@ const DBService = class {
         this.API_KEY = '7bef955e1213b326352b8532930d2857';
     }
 
-    getData = async (url) => {
+    async getData (url) {
         tvShows.append(loading);
         const res = await fetch(url);
         if (res.ok) {
@@ -40,25 +40,37 @@ const DBService = class {
         }
     }
     
-    getTestData = () => {
+    getTestData () {
         return this.getData('test.json');
     }
     
-    getTestCard = () => {
+    getTestCard ()  {
         return this.getData('card.json');
     }
     
-    getSearchResult = query => this.getData(`${this.SERVER}/search/tv?api_key=${this.API_KEY}&query=${query}&language=ru-RU`);
+    getSearchResult (query) {
+        return this.getData(`${this.SERVER}/search/tv?api_key=${this.API_KEY}&query=${query}&language=ru-RU`);   
+    }
     
-    getTvShow = id => this.getData(`${this.SERVER}/tv/${id}?api_key=${this.API_KEY}&language=ru-RU`);
+    getTvShow (id) {
+        return this.getData(`${this.SERVER}/tv/${id}?api_key=${this.API_KEY}&language=ru-RU`);
+    }
 
-    getTopRated = () => this.getData(`${this.SERVER}/tv/top_rated?api_key=${this.API_KEY}&language=ru-RU`);
+    getTopRated () {
+        return this.getData(`${this.SERVER}/tv/top_rated?api_key=${this.API_KEY}&language=ru-RU`);
+    }
     
-    getPopular = () => this.getData(`${this.SERVER}/tv/popular?api_key=${this.API_KEY}&language=ru-RU`);
+    getPopular () {
+        return this.getData(`${this.SERVER}/tv/popular?api_key=${this.API_KEY}&language=ru-RU`);
+    }
     
-    getToday = () => this.getData(`${this.SERVER}/tv/airing_today?api_key=${this.API_KEY}&language=ru-RU`);
+    getToday () {
+        return this.getData(`${this.SERVER}/tv/airing_today?api_key=${this.API_KEY}&language=ru-RU`);
+    }
     
-    getWeek = () => this.getData(`${this.SERVER}/tv/on_the_air?api_key=${this.API_KEY}&language=ru-RU`);
+    getWeek () {
+        return this.getData(`${this.SERVER}/tv/on_the_air?api_key=${this.API_KEY}&language=ru-RU`);
+    }
 }
 
 const renderCard = (response, target) => {
