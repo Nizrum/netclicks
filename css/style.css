@@ -683,7 +683,18 @@ main {
     -o-transition: all ease .5s;
     transition: all ease .5s;
     border-radius: 10px;
+}
 
+.headTrailer {
+    margin-bottom: 12px;
+}
+
+.trailer-title {
+    margin-bottom: 8px;
+}
+
+.trailer-video {
+    margin-bottom: 20px;
 }
 
 @media (max-width: 1024px) {

@@ -18,6 +18,8 @@ const dropdown = document.querySelectorAll('.dropdown');
 const tvShowsHead = document.querySelector('.tv-shows__head');
 const posterWrapper = document.querySelector('.poster__wrapper');
 const modalContent = document.querySelector('.modal__content');
+const trailer = document.getElementById('trailer');
+const headTrailer = document.getElementById('headTrailer');
 
 
 const loading = document.createElement('div');
@@ -71,6 +73,11 @@ const DBService = class {
     getWeek () {
         return this.getData(`${this.SERVER}/tv/on_the_air?api_key=${this.API_KEY}&language=ru-RU`);
     }
+
+    getVideo (id) {
+        return this.getData(`${this.SERVER}/tv/${id}/videos?api_key=${this.API_KEY}&language=ru-RU`);
+    }
+
 }
 
 const renderCard = (response, target) => {
@@ -222,6 +229,33 @@ tvShowsList.addEventListener('click', event => {
                 }
                 rating.textContent = data.vote_average;
                 modalLink.href = data.homepage;
+                return data.id;
+            })
+            // .then(new DBService().getVideo(response))
+            .then(response => {
+                return new DBService().getVideo(response);
+            })
+            .then(response => {
+                headTrailer.classList.add('hide');
+                trailer.textContent = '';
+                if (response.results.length) {
+                    headTrailer.classList.remove('hide');
+                    response.results.forEach(item => {
+                        const trailerItem = document.createElement('li');
+                        trailerItem.innerHTML = `
+                            <h4 class="trailer-title">${item.name}</h4>
+                            <iframe
+                                class="trailer-video" 
+                                width="448" 
+                                height="252" 
+                                src="https://www.youtube.com/embed/${item.key}" 
+                                frameborder="0" 
+                                allowfullscreen>
+                            </iframe>
+                        `;
+                        trailer.append(trailerItem);
+                    })
+                } 
             })
             .then(() => {
                 document.body.style.overflow = 'hidden';
